@@ -2,7 +2,7 @@
 
 A powerful graph-based retrieval-augmented generation (GraphRAG) system leveraging the Innate Environment framework.
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -14,11 +14,11 @@ A powerful graph-based retrieval-augmented generation (GraphRAG) system leveragi
 - [Contributing](#contributing)
 - [License](#license)
 
-## 🎯 Overview
+## Overview
 
 Innate-Env GraphRAG is a sophisticated implementation of retrieval-augmented generation that combines graph-based knowledge representation with advanced AI capabilities. It enables semantic search, contextual retrieval, and intelligent response generation across complex knowledge bases.
 
-## ✨ Features
+## Features
 
 - **Graph-Based Knowledge Representation**: Build and query interconnected knowledge graphs
 - **Advanced Retrieval**: Semantic search with contextual understanding
@@ -27,7 +27,7 @@ Innate-Env GraphRAG is a sophisticated implementation of retrieval-augmented gen
 - **Scalable Architecture**: Handle large-scale knowledge bases efficiently
 - **API Support**: RESTful endpoints for easy integration
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
@@ -54,7 +54,7 @@ cp .env.example .env
 # Edit .env with your configuration
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ```javascript
 // Basic initialization example
@@ -74,7 +74,7 @@ const results = await rag.query('What are the latest developments in AI?');
 console.log(results);
 ```
 
-## 📖 Usage
+## Usage
 
 ### Creating a Knowledge Graph
 
@@ -110,7 +110,7 @@ const response = await rag.generate(
 );
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 Configure your system through environment variables or config files:
 
@@ -132,7 +132,7 @@ LLM_API_KEY=your_api_key
 NODE_ENV=development
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 The system is built with a modular architecture:
 
@@ -156,7 +156,7 @@ The system is built with a modular architecture:
 └─────────────────────────────────────────┘
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -172,23 +172,6 @@ We welcome contributions! Please follow these steps:
 - Write tests for new features
 - Update documentation accordingly
 - Ensure code linting passes
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 📞 Support
-
-For issues, questions, or suggestions:
-- Open an [Issue](https://github.com/Giridhar083/Innate-Env-----GraphRAG/issues)
-- Check existing documentation
-- Contact the maintainers
-
-## 🙏 Acknowledgments
-
-- Built with [Innate Environment](https://github.com/innate-env)
-- Powered by advanced graph databases and LLM models
-- Community contributions and feedback
 
 ---
 
