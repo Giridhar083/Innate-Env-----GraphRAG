@@ -1,122 +1,64 @@
-# Innate-Env GraphRAG
+# Innate-Env: Transforming Research with GraphRAG 
 
-A powerful graph-based retrieval-augmented generation (GraphRAG) system leveraging the Innate Environment framework.
+> **A deep-dive into building a Text-based Graph Retrieval-Augmented Generation system for complex medical data.**
 
-##  Table of Contents
+Traditional RAG systems often struggle with "connecting the dots" across large datasets because they treat information as isolated chunks. **Innate-Env** solves this by leveraging **GraphRAG**—using structured knowledge graphs to capture the relationships between entities, ensuring that the AI understands the *context*, not just the keywords.
 
-- [Overview](#overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Architecture](#architecture)
-- [Contributing](#contributing)
-- [License](#license)
+---
 
-## Overview
+## The Motivation: Why GraphRAG?
+While working with complex datasets, I realized that standard vector search often misses the global context. If a research paper mentions a "symptom" on page 5 and a "treatment" on page 50, a basic RAG might not link them effectively. 
 
-Innate-Env GraphRAG is a sophisticated implementation of retrieval-augmented generation that combines graph-based knowledge representation with advanced AI capabilities. It enables semantic search, contextual retrieval, and intelligent response generation across complex knowledge bases.
+**Innate-Env** was built to:
+1. **Extract Entities:** Identify key terms and concepts automatically using LLMs.
+2. **Map Relationships:** Create a network (graph) of how these entities interact.
+3. **Enhance Retrieval:** Use the graph structure to provide the LLM with a comprehensive "map" of the data before it generates an answer.
 
-## Features
+---
 
-- **Graph-Based Knowledge Representation**: Build and query interconnected knowledge graphs
-- **Advanced Retrieval**: Semantic search with contextual understanding
-- **RAG Integration**: Augmented generation with retrieved context
-- **Environment Configuration**: Flexible setup through Innate Environment framework
-- **Scalable Architecture**: Handle large-scale knowledge bases efficiently
-- **API Support**: RESTful endpoints for easy integration
+## The Tech Stack
+*   **Language:** Python 3.x
+*   **Graph Database:** Neo4j (for high-performance relationship mapping)
+*   **Orchestration:** LangChain / Indexing frameworks
+*   **LLM Integration:** Optimized for Graph-based querying and Cypher generation.
 
-## Installation
+---
 
-### Prerequisites
+## Technical Deep-Dive: How it Works
+Unlike a standard flat index, this project implements a multi-stage pipeline:
 
-- Node.js (v14 or higher)
-- npm or yarn
-- Git
+### 1. Knowledge Graph Construction
+The system parses raw text and uses an LLM to identify "Nodes" and "Edges". This transforms unstructured text into a structured web of knowledge, allowing for multi-hop reasoning.
 
-### Setup
+### 2. Contextual Retrieval
+When a user asks a question, the system doesn't just look for similar text; it traverses the graph. It finds the relevant node and explores its neighbors, gathering a rich context that a standard similarity search would overlook.
 
-1. Clone the repository:
+> **Key Insight:** During development, I found that the precision of the GraphRAG approach is significantly higher for "Global" questions compared to "Local" keyword-based questions.
+
+---
+
+##  Results & Impact
+*   **Enhanced Connectivity:** Successfully mapped complex relationships within research notebooks.
+*   **Improved Reasoning:** The LLM provides more structured, evidence-based answers by citing specific nodes in the knowledge graph.
+
+---
+
+##  Getting Started
+To run this project locally, ensure you have a Neo4j instance running and follow these steps:
+
 ```bash
-git clone https://github.com/Giridhar083/Innate-Env-----GraphRAG.git
-cd Innate-Env-----GraphRAG
-```
+# Clone the repository
+git clone [https://github.com/Giridhar083/Innate-Env-----GraphRAG](https://github.com/Giridhar083/Innate-Env-----GraphRAG)
 
-2. Install dependencies:
-```bash
-npm install
-```
+# Install dependencies
+pip install -r requirements.txt
 
-3. Configure environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your configuration
-```
+# Configure your environment variables
+export NEO4J_URI="your_uri"
+export OPENAI_API_KEY="your_key"
 
-## Quick Start
-
-```javascript
-// Basic initialization example
-const GraphRAG = require('innate-env-graphrag');
-
-const rag = new GraphRAG({
-  environment: 'production',
-  graphDB: 'neo4j',
-  apiKey: process.env.API_KEY
-});
-
-// Initialize the system
-await rag.initialize();
-
-// Query the knowledge graph
-const results = await rag.query('What are the latest developments in AI?');
-console.log(results);
-```
-
-## Usage
-
-### Creating a Knowledge Graph
-
-```javascript
-// Add nodes to the graph
-await rag.addNode({
-  id: 'concept-1',
-  label: 'Artificial Intelligence',
-  properties: { category: 'technology' }
-});
-
-// Create relationships
-await rag.addRelationship({
-  source: 'concept-1',
-  target: 'concept-2',
-  type: 'relatedTo'
-});
-```
-
-### Querying and Retrieval
-
-```javascript
-// Perform semantic search
-const searchResults = await rag.semanticSearch(
-  'machine learning algorithms',
-  { limit: 10, minScore: 0.7 }
-);
-
-// Generate response with retrieved context
-const response = await rag.generate(
-  'Explain how neural networks work',
-  { context: searchResults, model: 'gpt-4' }
-);
-```
-
-## Configuration
-
-Configure your system through environment variables or config files:
-
-```env
-# Database Configuration
-GRAPH_DB_URL=neo4j://localhost:7687
+# Launch the system
+python main.py
 GRAPH_DB_USER=neo4j
 GRAPH_DB_PASSWORD=your_password
 
