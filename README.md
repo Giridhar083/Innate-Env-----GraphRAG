@@ -46,33 +46,6 @@ When a user asks a question, the system doesn't just look for similar text; it t
 ##  Getting Started
 To run this project locally, ensure you have a Neo4j instance running and follow these steps:
 
-```bash
-# Clone the repository
-git clone [https://github.com/Giridhar083/Innate-Env-----GraphRAG](https://github.com/Giridhar083/Innate-Env-----GraphRAG)
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure your environment variables
-export NEO4J_URI="your_uri"
-export OPENAI_API_KEY="your_key"
-
-# Launch the system
-python main.py
-GRAPH_DB_USER=neo4j
-GRAPH_DB_PASSWORD=your_password
-
-# API Configuration
-API_PORT=3000
-API_TIMEOUT=30000
-
-# LLM Configuration
-LLM_MODEL=gpt-4
-LLM_API_KEY=your_api_key
-
-# Environment
-NODE_ENV=development
-```
 
 ## Architecture
 
